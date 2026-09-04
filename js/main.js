@@ -37,4 +37,18 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   }
+
+  // Hero language toggle (ES / EN) — only elements tagged with data-es/data-en
+  const langToggle = document.getElementById('lang-toggle');
+  if (langToggle) {
+    let lang = 'es';
+    langToggle.addEventListener('click', () => {
+      lang = lang === 'es' ? 'en' : 'es';
+      document.querySelectorAll('[data-es]').forEach((el) => {
+        el.textContent = el.dataset[lang];
+      });
+      langToggle.textContent = lang === 'es' ? 'EN' : 'ES';
+      langToggle.setAttribute('aria-label', lang === 'es' ? 'Switch to English' : 'Cambiar a español');
+    });
+  }
 });
