@@ -38,17 +38,20 @@ document.addEventListener('DOMContentLoaded', () => {
     onScroll();
   }
 
-  // Hero language toggle (ES / EN) — only elements tagged with data-es/data-en
+  // Language toggle (ES / EN) — translates every element tagged with data-es/data-en
   const langToggle = document.getElementById('lang-toggle');
   if (langToggle) {
     let lang = 'es';
     langToggle.addEventListener('click', () => {
       lang = lang === 'es' ? 'en' : 'es';
       document.querySelectorAll('[data-es]').forEach((el) => {
-        el.textContent = el.dataset[lang];
+        // innerHTML (not textContent) so tagged elements can keep inline
+        // formatting like <strong> in their translated copy.
+        el.innerHTML = el.dataset[lang];
       });
       langToggle.textContent = lang === 'es' ? 'EN' : 'ES';
       langToggle.setAttribute('aria-label', lang === 'es' ? 'Switch to English' : 'Cambiar a español');
+      document.documentElement.lang = lang === 'es' ? 'es-CL' : 'en';
     });
   }
 });
