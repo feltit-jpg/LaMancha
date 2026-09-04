@@ -181,20 +181,21 @@ p { color: var(--text-dim); margin: 0 0 1em; }
 
 .hero {
   position: relative;
-  padding: 90px 0 100px;
   overflow: hidden;
-  text-align: center;
   background: var(--bg-dark);
 }
 
 .hero-video-wrap {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+  position: relative;
+  width: 100%;
+  height: 78vh;
+  min-height: 420px;
+  max-height: 760px;
   overflow: hidden;
 }
 
 .hero-video {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -202,57 +203,28 @@ p { color: var(--text-dim); margin: 0 0 1em; }
   filter: brightness(0.55) saturate(1.1);
 }
 
-.hero-glow {
+.hero-copy {
   position: absolute;
-  inset: -20% -10%;
-  z-index: 1;
-  background:
-    linear-gradient(180deg, rgba(11, 7, 20, 0.35), rgba(11, 7, 20, 0.65)),
-    radial-gradient(45% 55% at 22% 20%, rgba(255, 63, 168, 0.28), transparent 70%),
-    radial-gradient(45% 55% at 80% 15%, rgba(61, 219, 255, 0.22), transparent 70%),
-    radial-gradient(55% 60% at 50% 90%, rgba(155, 92, 255, 0.28), transparent 70%);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: linear-gradient(to top, rgba(36, 22, 69, 0.85), transparent);
   pointer-events: none;
 }
-
-.hero-inner { position: relative; display: flex; flex-direction: column; align-items: center; }
-
-.hero-logo {
-  width: min(640px, 92vw);
-  filter: drop-shadow(0 0 40px rgba(155, 92, 255, 0.45));
-  margin-bottom: 6px;
+.hero-copy h1 {
+  margin: 0;
+  color: var(--text-light);
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 1;
+  text-shadow: 0 0 30px rgba(155, 92, 255, 0.5);
 }
-
-.hero-tagline {
-  font-family: var(--font-display);
-  color: var(--neon-cyan);
-  font-size: clamp(1.1rem, 2.4vw, 1.5rem);
-  text-shadow: 0 0 18px rgba(61, 219, 255, 0.55);
-  margin-bottom: 18px;
-  letter-spacing: 0.5px;
-}
-
-.hero-lead {
-  max-width: 620px;
-  font-size: 1.05rem;
+.hero-copy p {
+  margin: 0.35rem 0 0;
   color: var(--text-light);
   opacity: 0.9;
-}
-
-.hero-badges {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin: 10px 0 34px;
-}
-.hero-badges span {
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 7px 16px;
-  border-radius: 999px;
-  border: 1px solid var(--border-glow);
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--text-light);
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
 }
 
 /* ---------------- Cómo se juega ---------------- */
